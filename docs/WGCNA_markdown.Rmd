@@ -1,0 +1,117 @@
+---
+title: "WGCNA analysis of host and microbiome transcriptomes in calcifying fluid"
+author: "Andrea Unzueta Martínez"
+date: "2025-11-24"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+This document contains the full R code used to perform the weighted gene co-expression network analyses (WGCNA) for the host and microbiome transcriptomes presented in our manuscript. All input count tables were generated and preprocessed (quality filtering, transformation, and formatting) using pipelines provided elsewhere in this GitHub repository; here, we focus exclusively on the WGCNA analysis using the final processed matrices. This document is provided solely to ensure transparency and reproducibility of the network analysis workflow and is not intended as a general WGCNA tutorial.
+
+## Upload filtered, log transformed, and formated data tables 
+```{r load-data, message=FALSE, warning=FALSE}
+host_counts_final <- read.csv("host_counts_matrix_WGCNA.csv", row.names = 1, check.names = FALSE)
+symbiont_counts_final <- read.csv("Microbiome_counts_matrix_WGCNA.csv", row.names = 1, check.names = FALSE)
+traits <- read.csv("sample_traits_WGCNA.csv", row.names = 1, check.names = FALSE)
+```
+
+## Load libraries (`WGCNA`)
+```{r setup environment}
+# Load packages used in this analysis
+library(WGCNA)
+```
+
+## Choose soft-thresholding power for the host network
+```{r chose soft-thresholding power for host, echo=TRUE}
+# Choose soft-thresholding power for host
+powers <- c(1:20)  # Range of powers to test
+sft_host <- pickSoftThreshold(host_counts_final, powerVector = powers, verbose = 5)
+
+# Plot the scale-free topology to choose a power
+plot(sft_host$fitIndices[,1], -sign(sft_host$fitIndices[,3])*sft_host$fitIndices[,2],
+     xlab="Soft Threshold (power)", ylab="Scale Free Topology Model Fit", type="n")
+text(sft_host$fitIndices[,1], -sign(sft_host$fitIndices[,3])*sft_host$fitIndices[,2],
+     labels=powers, col="red")
+abline(h=0.9, col="blue")
+```
+
+## Choose soft-thresholding power for the microbiome network
+```{r chose soft-thresholding power for microbiome, echo=TRUE}
+# Choose soft-thresholding power for symbiont
+powers <- c(1:20)  # Range of powers to test
+sft_symbiont <- pickSoftThreshold(symbiont_counts_final, powerVector = powers, verbose = 5)
+
+# Plot the scale-free topology to choose a power
+plot(sft_symbiont$fitIndices[,1], -sign(sft_symbiont$fitIndices[,3])*sft_symbiont$fitIndices[,2],
+     xlab="Soft Threshold (power)", ylab="Scale Free Topology Model Fit", type="n")
+text(sft_symbiont$fitIndices[,1], -sign(sft_symbiont$fitIndices[,3])*sft_symbiont$fitIndices[,2],
+     labels=powers, col="red")
+abline(h=0.9, col="blue")
+
+```
+
+## Set host soft-thresholding power and run host network
+```{r run host WGCNA, echo=TRUE}
+# Set the chosen power for the host
+softPower_host <- 5  # Replace with your chosen value
+
+# Construct the network and identify modules for the host
+host_net <- blockwiseModules(
+  host_counts_final, power = softPower_host,
+  TOMType = "unsigned", minModuleSize = 30,
+  reassignThreshold = 0, mergeCutHeight = 0.25,
+  numericLabels = TRUE, pamRespectsDendro = FALSE,
+  saveTOMs = TRUE, verbose = 3
+)
+```
+## Set microbiome soft-thresholding power and run microbiome network
+```{r run microbiome WGCNA, echo=TRUE}
+# Set the chosen power for the host
+softPower_symbiont <- 6  # Replace with chosen value for microbiome
+
+# Construct the network and identify modules for the host
+ symbiont_net <- blockwiseModules(
+  symbiont_counts_final, power = softPower_symbiont,
+  TOMType = "unsigned", minModuleSize = 30,
+  reassignThreshold = 0, mergeCutHeight = 0.25,
+  numericLabels = TRUE, pamRespectsDendro = FALSE,
+  saveTOMs = TRUE, verbose = 3 
+)
+```
+## Extract module eigengens from each netwokrs
+```{r extract module eigengens, echo=TRUE}
+
+host_ME <- host_net$MEs
+
+symbiont_ME <- symbiont_net$MEs
+
+```
+
+## Calculate correlations between module eigengens
+```{r correlate modules}
+
+module_cor <- cor(host_ME, symbiont_ME, method = "pearson")
+
+#Calculate p-values for each correlation
+module_pvalues <- corPvalueStudent(module_cor, nrow(host_ME))
+
+```
+
+## Calculate correlations between host MEs and sample traits (seawater and calcifiyng fluid pH and DIC)
+```{r correlations between host MEs and sample traits}
+
+# Calculate correlations between host MEs and traits
+host_trait_cor <- cor(host_ME, traits, use = "pairwise.complete.obs", method = "spearman")
+host_trait_pvalues <- corPvalueStudent(host_trait_cor, nrow(host_ME))
+
+```
+
+
+## Calculate correlations between microbiome MEs and sample traits (seawater and calcifying fluid pH and DIC)
+```{r correlations between microbiome MEs and sample traits}
+
+# Calculate correlations between microbiome MEs and traits
+symbiont_trait_cor <- cor(symbiont_ME, traits, use = "pairwise.complete.obs", method = "spearman")
+symbiont_trait_pvalues <- corPvalueStudent(symbiont_trait_cor, nrow(symbiont_ME))
+```
