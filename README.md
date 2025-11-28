@@ -1,6 +1,6 @@
 # 🦪 Oyster Host & Microbiome Transcriptomics (for manuscript reproducibility)
 
-## Overview: Reproducible raw-data processing + WGCNA analysis
+## Overview: raw-data processing + WGCNA analysis
 This repository provides the materials necessary to reproduce the core computational workflows used in our study of Crassostrea virginica host and microbiome transcriptomes. Specifically, it contains (1) the complete bioinformatics pipeline used to generate raw count matrices and annotations for both the host and the microbiome, and (2) the full weighted gene co-expression network analysis (WGCNA) performed on filtered, log transformed expression matrices. These resources ensure transparency and reproducibility of the primary data processing and co-expression analyses associated with the manuscript.
 
 Raw reads for this project are publicly available under NCBI BioProject accession  
