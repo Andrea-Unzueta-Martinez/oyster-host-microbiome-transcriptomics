@@ -40,7 +40,7 @@ These matrices allow users to apply alternative normalization or additional down
 
 ## Microbiome transcriptomic analyses
 
-### Differential expression and biomineralization toolkit genes
+### Differential expression and pH relevant genes
 - `2_downstream_analyses/2.3_Microbiome_Analyses/  
   Scripts in 2_downstream_analyses/2.3_Microbiome_Analyses/ process microbiome metatranscriptomic data from per-sample ORF count tables and eggNOG-mapper annotations through quality control, filtering, and functional aggregation. These analyses retain ORFs with both expression and functional annotations, remove eukaryotic and ribosomal transcripts, and construct phyloseq objects for downstream analyses. ORF-level counts are collapsed to KEGG orthologues (KOs), filtered for rarity and prevalence, and analyzed using DESeq2 to identify differentially abundant microbial functions across treatments and timepoints. Targeted downstream scripts then extract KOs involved in biochemical pathways relevant to calcifying fluid chemistry (e.g., nitrogen and sulfur cycling, carbonic anhydrase, urease) and generate tornado plots summarizing effect sizes across timepoints.
  
