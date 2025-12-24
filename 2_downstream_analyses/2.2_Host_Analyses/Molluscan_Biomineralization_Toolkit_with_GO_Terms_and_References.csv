@@ -1,0 +1,25 @@
+Category,,Gene/Protein,Function,Representative GO Term(s),Primary Reference(s)
+Framework proteins, GO:0006030  ,Chitin synthase,Synthesizes chitin chains for the shell framework,GO:0006030 (chitin metabolic process),Zhang et al. 2019; Schonitzer & Weiss 2007
+Framework proteins,,Chitinase,Hydrolyzes chitin; regulates chitin remodeling,GO:0004568 (chitinase activity),Liao et al. 2021; Zhou et al. 2020
+Framework proteins,,Shematrin,Gly-rich domain protein; structural scaffold,GO:0005576 (extracellular region),Yano et al. 2006; Lin et al. 2014
+Framework proteins,,KRMP,Lys-rich matrix protein; inhibits CaCO3 precipitation,GO:0051920 (peroxidase activity); GO:0051213 (dioxygenase activity),Zhang et al. 2006; Liang et al. 2015
+Framework proteins,,Prisilkin-39,Gly/Tyr/Ser-rich; inhibits aragonite deposition,GO:0004867 (serine-type endopeptidase inhibitor activity),Kong et al. 2009
+Framework proteins,,Prismalin-14,Binds chitin and CaCO3; dual functionality,GO:0004867 (serine-type endopeptidase inhibitor activity); GO:0005515 (protein binding),Suzuki et al. 2007; Takeuchi et al. 2016
+Regulatory proteins,,Nacrein,Carbonic anhydrase + Gly-X-Asn domain; inhibits CaCO3 nucleation,GO:0004089 (carbonic anhydrase activity),"Miyamoto et al. 1996, 2005"
+Regulatory proteins,,MSP-1,Asp-rich; template for calcite nucleation,GO:0005509 (calcium ion binding),Sarashina & Endo 2001
+Regulatory proteins,,Aspein,Highly acidic; promotes calcite nucleation,GO:0005509 (calcium ion binding),Tsukamoto et al. 2004; Takeuchi et al. 2008
+Regulatory proteins,,PfY2,Asp-rich; inhibits CaCO3 growth,GO:0005509 (calcium ion binding); GO:0030154 (cell differentiation),Yan et al. 2017
+Regulatory proteins,,PNU7,Inhibits calcite; stabilizes vaterite,GO:0004867 (serine-type endopeptidase inhibitor activity),Yi et al. 2022
+Regulatory proteins,,Pif80,Asn-rich; shapes aragonite tablets,GO:0005509 (calcium ion binding); GO:0005615 (extracellular space),Suzuki et al. 2009; Bahn et al. 2017
+Regulatory proteins,,PU14,Gln-rich; regulates calcite morphology,GO:0005509 (calcium ion binding),Ji et al. 2021
+Regulatory proteins,,Tyrosinase,Crosslinks matrix proteins; inhibits CaCO3 precipitation,GO:0004503 (monooxygenase activity); GO:0005509 (calcium ion binding),Yang et al. 2017; Miglioli et al. 2019
+Regulatory proteins,,Carbonic anhydrase,Catalyzes CO2/HCO3- conversion; regulates pH,GO:0004089 (carbonic anhydrase activity); GO:0008270 (zinc ion binding),Le Roy et al. 2014; Marin et al. 2012
+Immunomodulatory,,C1q domain proteins,Matrix structuring; responds to pathogens,GO:0006955 (immune response); GO:0005509 (calcium ion binding),Xie et al. 2020; Xiong et al. 2021
+Immunomodulatory,,FN3 domain proteins,Mineral layer arrangement; adhesion,GO:0005515 (protein binding); GO:0007155 (cell adhesion),Arivalagan et al. 2017; Carini et al. 2019
+Immunomodulatory,,TIMP,Inhibits proteases; protects matrix,GO:0030414 (peptidase inhibitor activity),Liao et al. 2015; Marie et al. 2017
+Transporters,,PMCA,"Ca2+ transport; high affinity, low capacity",GO:0005388 (calcium-transporting ATPase activity),Sillanpaa et al. 2018
+Transporters,,NCX,Na+/Ca2+ exchanger; bidirectional,GO:0005389 (sodium:calcium exchange activity),Sillanpaa et al. 2018; Ramesh et al. 2019
+Transporters,,VDCC,Voltage-dependent Ca2+ channel,GO:0005245 (voltage-gated calcium channel activity),"Fan et al. 2007a,b"
+Transporters,,Bicarbonate transporter (SLC4),HCO3- supply for calcification,GO:0015701 (bicarbonate transport),"Yarra et al. 2021a,b; Ramesh et al. 2019"
+Transporters,,Na+/K+-ATPase,Maintains Na+ gradient for other ion transport,GO:0005391 (sodium:potassium-exchanging ATPase activity),Ramesh et al. 2019; Zhao et al. 2017a
+Transporters,,H+-ATPase / NHE / VGHC,Removes protons; regulates pH,GO:0016021 (integral component of membrane); GO:0015385 (proton-transporting ATPase activity),Taylor et al. 2011; Zhao et al. 2017b
